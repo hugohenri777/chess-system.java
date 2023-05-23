@@ -31,6 +31,12 @@ public class UI {
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
 	
+	// https://stackoverflow.com/questions/2979383/java-clear-the-console
+	public static void clearScreen() { 
+		 System.out.print("\033[H\033[2J"); 
+		 System.out.flush(); 
+	}
+	
 	public static ChessPosition readChessPosition(Scanner sc) {
 		try {
 			String s = sc.nextLine();
@@ -39,7 +45,7 @@ public class UI {
 			return new ChessPosition(column, row);
 		}
 		catch (RuntimeException e) {
-			throw new InputMismatchException("Error resding ChessPosition. Valid value are from a1 to h8.");
+			throw new InputMismatchException("Error reading ChessPosition. Valid value are from a1 to h8.");
 		}
 	}
 	
